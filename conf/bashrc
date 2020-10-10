@@ -1,0 +1,16 @@
+alias ls='ls --color=auto'
+alias grep='grep --color'
+alias egrep='egrep --color'
+alias df='df -Th'
+alias l='ls -l'
+alias ll='ls -la'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+export EDITOR=vim
+export PS1='\[\033[01;31m\][\[\033[01;37m\]\t\[\033[01;31m\]] DEBIAN: \[\033[01;32m\]\u\[\033[01;31m\]@\[\033[01;32m\]\h \[\033[01;31m\][\[\033[01;33m\]\w\[\033[01;31m\]]\[\033[01;37m\]$ \[\033[00m\]'
+
