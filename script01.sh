@@ -62,7 +62,7 @@ then
                     echo  ============================================================ >> $LOG
 
 					# Instalar Servidor NTP
-					apt-get install ntp ntp-doc ntpdate dnsutils >> $LOG
+					apt-get install ntp ntp-doc ntpdate dnsutils acl rsync >> $LOG
 					echo -e "Instalado Servidor NTP!!!, continuando o script..."
 					echo
 					echo  ============================================================ >> $LOG
