@@ -57,7 +57,6 @@ then
 
 					 echo -e "Qual o nome do Servidor?"
 					read Hostname
-
 					 
     				echo -e "Acertando IP fixo"				
 					# Backup do script interfaces
@@ -68,73 +67,64 @@ then
 					read
 
                     echo -e "Atualizando as Listas do Apt-Get (apt-get update), aguarde..."
-                    #Exportando a variável do Debian Frontend Noninteractive para não solicitar interação com o usuário
-                    export DEBIAN_FRONTEND=noninteractive
-                    #Atualizando as listas do apt-get
-                    apt-get update &>> $LOG
-                    echo -e "Listas Atualizadas com Sucesso!!!, continuando o script..."
+                    	#Exportando a variável do Debian Frontend Noninteractive para não solicitar interação com o usuário
+                    	export DEBIAN_FRONTEND=noninteractive
+                    	#Atualizando as listas do apt-get
+                    	apt-get update &>> $LOG
+                    	echo -e "Listas Atualizadas com Sucesso!!!, continuando o script..."
                     echo
                     echo  ============================================================ >> $LOG
-
                     echo -e "Atualização dos Aplicativos Instalados (apt-get upgrade), aguarde..."
-                    #Fazendo a atualização de todos os pacotes instalados no servidor
-                    apt-get -o Dpkg::Options::="--force-confold" upgrade -q -y --force-yes &>> $LOG
-                    echo -e "Sistema Atualizado com Sucesso!!!, continuando o script..."
+                    	#Fazendo a atualização de todos os pacotes instalados no servidor
+                    	apt-get -o Dpkg::Options::="--force-confold" upgrade -q -y --force-yes &>> $LOG
+                    	echo -e "Sistema Atualizado com Sucesso!!!, continuando o script..."
                     echo
                     echo  ============================================================ >> $LOG
-
-
                     echo -e "Atualização da Distribuição Ubuntu Server Kernel (apt-get dist-upgrade), aguarde..."
                     echo -e "Versão do Kernel atual: `uname -r`"
-                    #Fazendo a atualização do Kernel
-                    apt-get -o Dpkg::Options::="--force-confold" dist-upgrade -q -y --force-yes &>> $LOG
-                    echo
-                    echo -e "Listando os Kernel instalados"
-                    #Listando as imagens dos Kernel instalados
-                    dpkg --list | grep linux-image | cut -d" " -f3
-                    echo -e "Kernel Atualizado com Sucesso!!!, continuando o script..."
+                    	#Fazendo a atualização do Kernel
+                    	apt-get -o Dpkg::Options::="--force-confold" dist-upgrade -q -y --force-yes &>> $LOG
+                    	echo
+                    	echo -e "Listando os Kernel instalados"
+                    	#Listando as imagens dos Kernel instalados
+                    	dpkg --list | grep linux-image | cut -d" " -f3
+                    	echo -e "Kernel Atualizado com Sucesso!!!, continuando o script..."
                     echo
                     echo ============================================================ >> $LOG
-
                     echo -e "Autoremoção dos Aplicativos desnecessários instalados (apt-get autoremove), aguarde..."
-                    #Removendo aplicativos que não estão sendo mais usados
-                    apt-get -y autoremove &>> $LOG
-                    echo -e "Remoção feita com Sucesso!!!, continuando o script..."
-                    echo
+                    	#Removendo aplicativos que não estão sendo mais usados
+                    	apt-get -y autoremove &>> $LOG
+                    	echo -e "Remoção feita com Sucesso!!!, continuando o script..."
+                    	echo
                     echo ============================================================ >> $LOG
-
                     echo -e "Limpando o Cache do Apt-Get (download dos arquivos *.deb | apt-get autoclean e apt-get clean), aguarde..."
-                    #Limpando o diretório de cache do apt-get
-                    apt-get autoclean &>> $LOG
-                    apt-get clean &>> $LOG
-                    echo -e "Cache Limpo com Sucesso!!!, continuando o script..."
+                    	#Limpando o diretório de cache do apt-get
+                    	apt-get autoclean &>> $LOG
+                    	apt-get clean &>> $LOG
+                    	echo -e "Cache Limpo com Sucesso!!!, continuando o script..."
+                    	echo
+                    echo ============================================================ >> $LOG
+			echo -e "Configurando Bash"
+			mv -v /root/.bashrc /root/.bash.OLD >> $LOG
+			cp -v conf/bashrc /root/.bashrc >> $LOG
+			echo -e "Bach configurado!!!, continuando o script..."
+			echo
+                    echo ============================================================ >> $LOG
+			hostnamectl set-hostname $Hostname
+			mv /etc/hosts /etc/hosts.OLD
+			cp -v conf/hosts /etc/hosts
+			hostname -f
+			echo -e "Hostname configurado!!!, continuando o script..."
                     echo
                     echo ============================================================ >> $LOG
-
-					echo -e "Configurando Bash"
-					mv -v /root/.bashrc /root/.bash.OLD >> $LOG
-					cp -v conf/bashrc /root/.bashrc >> $LOG
-					echo -e "Bach configurado!!!, continuando o script..."
-					echo
-                    echo ============================================================ >> $LOG
-
-					hostnamectl set-hostname $Hostname
-					mv /etc/hosts /etc/hosts.OLD
-					cp -v conf/hosts /etc/hosts
-					hostname -f
-					echo -e "Hostname configurado!!!, continuando o script..."
-                    echo
-                    echo ============================================================ >> $LOG
-
                     echo -e "Configurando app vim"
-                    systemctl restart networking.service
-                    apt-get install vim >> $LOG
-                    cp -v conf/vimrc /root/.vimrc >> $LOG
-					echo -e "Vim instalado e Configurado!!!"
+                    	systemctl restart networking.service
+                    	apt-get install vim >> $LOG
+                    	cp -v conf/vimrc /root/.vimrc >> $LOG
+			echo -e "Vim instalado e Configurado!!!"
                     echo ============================================================ >> $LOG
-
-     				echo -e "Fim do Script-00.sh em: `date`" >> $LOG
-
+		    echo
+		    echo -e "Fim do Script-00.sh em: `date`" >> $LOG
 					echo
 					echo -e "Atualização das Listas do Apt-Get, Atualização dos Aplicativos e Atualização do Kernel Feito com Sucesso!!!!!"
 					echo
