@@ -104,18 +104,20 @@ then
 			echo -e "Configurando Bash"
 			mv -v /root/.bashrc /root/.bash.OLD >> $LOG
 			cp -v conf/bashrc /root/.bashrc >> $LOG
+			mv -v /home/mendes/.bashrc /home/mendes/.bash.OLD >> $LOG
+			cp -v conf/bashrc /home/mendes/.bashrc >> $LOG
 			echo -e "Bach configurado!!!, continuando o script..."
 			echo
                     echo ============================================================ >> $LOG
-			hostnamectl set-hostname $Hostname
-			mv /etc/hosts /etc/hosts.OLD
-			cp -v conf/hosts /etc/hosts
-			hostname -f
-			echo -e "Hostname configurado!!!, continuando o script..."
+			#hostnamectl set-hostname $Hostname
+			#mv /etc/hosts /etc/hosts.OLD
+			#cp -v conf/hosts /etc/hosts
+			#hostname -f
+			#echo -e "Hostname configurado!!!, continuando o script..."
                     echo
                     echo ============================================================ >> $LOG
                     echo -e "Configurando app vim"
-                    	systemctl restart networking.service
+                    	#systemctl restart networking.service
                     	apt-get install vim >> $LOG
                     	cp -v conf/vimrc /root/.vimrc >> $LOG
 			echo -e "Vim instalado e Configurado!!!"
@@ -134,7 +136,7 @@ then
 					echo -e "Pressione <Enter> para reinicializar o servidor: `hostname`"
 					read
 					sleep 2
-					reboot
+			reboot
 					else
 						echo -e "Versão do Kernel: $KERNEL não homologada para esse script, versão: >= 4.4 "
 						echo -e "Pressione <Enter> para finalizar o script"
