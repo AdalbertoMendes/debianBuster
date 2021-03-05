@@ -10,7 +10,6 @@
 #
 # Acertar os arquivos da pasta conf:
 #	bash
-#	hosts
 #
 # Atualização das listas do Apt-Get
 # Atualização dos Aplicativos Instalados
@@ -53,16 +52,16 @@ then
 					 echo
 					 echo  ============================================================ >> $LOG
 
-					 echo -e "Qual o nome do Servidor?"
-					read Hostname
+					# echo -e "Qual o nome do Servidor?"
+					# read Hostname
 					 
-    				echo -e "Acertando IP fixo"				
+    				#echo -e "Acertando IP fixo"				
 					# Backup do script interfaces
-					mv /etc/network/interfaces /etc/network/interfaces.OLD 
-					cp -v conf/interfaces /etc/network/interfaces
-					ping google.com -c 2
-					echo -e "Se ping der certo então digite Enter, se não Ctrl+C e verifique o arquivo /etc/network/interfaces" 					
-					read
+				#	mv /etc/network/interfaces /etc/network/interfaces.OLD 
+				#	cp -v conf/interfaces /etc/network/interfaces
+				#	ping google.com -c 2
+				#	echo -e "Se ping der certo então digite Enter, se não Ctrl+C e verifique o arquivo /etc/network/interfaces" 					
+				#	read
 
                     echo -e "Atualizando as Listas do Apt-Get (apt-get update), aguarde..."
                     	#Exportando a variável do Debian Frontend Noninteractive para não solicitar interação com o usuário
