@@ -9,11 +9,9 @@
 # Instalação dos pacotes principais para a primeira etapa
 #
 # Acertar os arquivos da pasta conf:
-#	interfaces
 #	bash
 #	hosts
 #
-# Acertando IP fixo
 # Atualização das listas do Apt-Get
 # Atualização dos Aplicativos Instalados
 # Atualização da Distribuição Ubuntu Server (Kernel)
