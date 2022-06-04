@@ -17,5 +17,5 @@ ufw allow 636/tcp
 ufw allow 3268/tcp
 ufw allow 3269/tcp
 ufw allow 49152:65535/tcp
-ufw enable
-ufw status verbose
+#ufw enable
+#ufw status verbose
